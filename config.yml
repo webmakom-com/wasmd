@@ -1,16 +1,22 @@
 accounts:
-  - name: alice
-    coins: ["20000token", "200000000stake"]
-  - name: bob
-    coins: ["10000token", "100000000stake"]
+  - name: validator1
+    coins: ["20000milli", "200000000vmilli"]
+  - name: faucet
+    coins: ["10000milli", "100000000vmilli"]
 validator:
-  name: alice
-  staked: "100000000stake"
+  name: validator1
+  staked: "100000000vmilli"
 client:
   openapi:
     path: "docs/static/openapi.yml"
 faucet:
-  name: bob
-  coins: ["5token", "100000stake"]
+  name: faucet
+  coins: ["5milli"]
 build:
   main: "cmd/wasmd"
+genesis:
+  chain_id: "millicent"
+  app_state:
+    staking:
+      params:
+        bond_denom: "vmilli"
